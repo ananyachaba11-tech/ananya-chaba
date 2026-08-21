@@ -1,0 +1,221 @@
+/* ---------- Base ---------- */
+
+:root {
+  --page-bg: #fbfbf8;
+  --text: #171717;
+  --muted: #6f746f;
+  --accent: #2f5a43;
+  --link: #2f5a43;
+  --sidebar-width: 250px;
+  --page-gutter: clamp(24px, 4vw, 64px);
+  --content-max: 1060px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--text);
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* ---------- Layout ---------- */
+
+.site-shell {
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--sidebar-width);
+  padding: 48px 32px;
+}
+
+.sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.site-name {
+  margin: 0;
+  color: var(--accent);
+  font-size: 1.62rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.site-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.nav-link {
+  padding: 2px 0;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 1.14rem;
+  transition: color 120ms ease;
+}
+
+.nav-link:hover {
+  color: var(--text);
+}
+
+.nav-link.active,
+.nav-link[aria-current="page"] {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.main-content {
+  margin-left: var(--sidebar-width);
+  padding: 56px var(--page-gutter) 80px;
+}
+
+.about {
+  width: min(100%, var(--content-max));
+  margin: 0 auto;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  margin-bottom: 28px;
+}
+
+.hero h1 {
+  margin: 0;
+  max-width: 1000px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 3vw, 3.15rem);
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+}
+
+.hero strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ---------- About copy ---------- */
+
+.about-copy {
+  max-width: 980px;
+}
+
+.about-copy p {
+  margin: 0 0 1.45em;
+}
+
+.about-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.about-copy a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.about-copy a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  :root {
+    --page-gutter: clamp(22px, 6vw, 44px);
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    padding: 28px var(--page-gutter) 0;
+  }
+
+  .sidebar-inner {
+    gap: 12px;
+  }
+
+  .site-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 38px var(--page-gutter) 64px;
+  }
+
+  .hero {
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 16.5px;
+    line-height: 1.6;
+  }
+
+  .sidebar {
+    padding-top: 22px;
+  }
+
+  .site-name {
+    font-size: 1.45rem;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+  }
+
+  .main-content {
+    padding-top: 30px;
+    padding-bottom: 52px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 9vw, 2.65rem);
+    line-height: 1.12;
+  }
+
+  .about-copy p {
+    margin-bottom: 1.35em;
+  }
+}
